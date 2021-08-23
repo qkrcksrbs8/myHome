@@ -25,8 +25,6 @@ class UserApiController {
         return repository.save(newUser);
     }
 
-    // Single item
-
     @GetMapping("/users/{id}")
     User one(@PathVariable Long id) {
         return repository.findById(id).orElse(null);

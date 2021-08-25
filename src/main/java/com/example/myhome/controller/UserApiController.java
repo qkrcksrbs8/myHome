@@ -8,6 +8,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *
+ * <pre>
+ * User API
+ * </pre>
+ *
+ * @ClassName : UserApiController.java
+ * @Description : 사용자 정보 CRUD 컨트롤러 입니다.
+ * @version 1.0
+ * @Modification Information
+ * <pre>
+ * since		: 2021-08-26
+ * author		: qkrck
+ * description	: 최초생성
+ * </pre>
+ */
 @RestController
 @RequestMapping("/api")
 class UserApiController {

@@ -32,6 +32,11 @@
                                     게시판 <span class="sr-only" th:if="${menu} == 'board'"></span>
                                 </a>
                             </li>
+                            <li class="nav-item" >
+                                <a class="nav-link" th:classappend="${menu} == 'deck'? 'active'" href="#">
+                                    덱 <span class="sr-only" th:if="${menu} == 'deck'"></span>
+                                </a>
+                            </li>
                         </ul>
 <!--                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
                         <a class="btn btn-secondary my-2 mr-2 my-sm-0" th:href="@{/account/login}"

@@ -33,7 +33,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" >
-                                <a class="nav-link" th:classappend="${menu} == 'deck'? 'active'" href="#">
+                                <a class="nav-link" th:classappend="${menu} == 'deck'? 'active'" href="#" th:href="@{/deck/deckList}">
                                     덱 <span class="sr-only" th:if="${menu} == 'deck'"></span>
                                 </a>
                             </li>

@@ -19,6 +19,14 @@ public class DeckController {
 //        model.addAttribute("startPage"  , startPage);
 //        model.addAttribute("endPage"    , endPage);
 //        model.addAttribute("boards"     , boards);
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
+        System.out.println("deck 호출");
         return "deck/deckList";
     }
 

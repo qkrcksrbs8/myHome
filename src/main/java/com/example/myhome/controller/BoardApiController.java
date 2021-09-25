@@ -55,4 +55,10 @@ class BoardApiController {
     void deleteBoard(@PathVariable Long id) {
         repository.deleteById(id);
     }
+
+    @PostMapping("/search")
+    String newBoard() {
+        return "return values";
+    }
+
 }

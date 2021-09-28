@@ -15,18 +15,7 @@ public class DeckController {
     @GetMapping("/deckList")
     public String list(Model model, @PageableDefault(size = 2) Pageable pageable,
                        @RequestParam(required = false, defaultValue = "") String searchText) {
-//
-//        model.addAttribute("startPage"  , startPage);
-//        model.addAttribute("endPage"    , endPage);
-//        model.addAttribute("boards"     , boards);
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
-        System.out.println("deck 호출");
+
         return "deck/deckList";
     }
 

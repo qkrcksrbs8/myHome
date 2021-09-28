@@ -56,14 +56,4 @@ class BoardApiController {
         repository.deleteById(id);
     }
 
-    @GetMapping("/search")
-    String getSearch() {
-        return "get search";
-    }
-
-    @PostMapping("/search")
-    String postSearch() {
-        return "post search";
-    }
-
 }

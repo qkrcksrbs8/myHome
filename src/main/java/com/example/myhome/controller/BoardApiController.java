@@ -26,8 +26,12 @@ class BoardApiController {
 
     @PostMapping("/boards")
     Board newBoard(@RequestBody Board newBoard) {
-        return repository.save(newBoard);
+
+        return null;
+//        return repository.save(newBoard);
     }
+
+
 
     // Single item
 
@@ -55,5 +59,6 @@ class BoardApiController {
     void deleteBoard(@PathVariable Long id) {
         repository.deleteById(id);
     }
+
 
 }

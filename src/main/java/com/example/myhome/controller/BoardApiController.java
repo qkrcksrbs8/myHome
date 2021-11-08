@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -46,21 +47,12 @@ class BoardApiController {
     }
 
     public boolean check(String str){
-        if (str.indexOf("[") > -1) return true;
-        if (str.indexOf("]") > -1) return true;
-        if (str.indexOf("<") > -1) return true;
-        if (str.indexOf(">") > -1) return true;
-        if (str.indexOf("@") > -1) return true;
-        if (str.indexOf("(") > -1) return true;
-        if (str.indexOf(")") > -1) return true;
-        if (str.indexOf(";") > -1) return true;
-        if (str.indexOf(":") > -1) return true;
-        if (str.indexOf("\\/") > -1) return true;
-        if (str.indexOf("[") > -1) return true;
-        return false;
+        String[] arrs = {"[", "]", "<", ">", "@", "(", ")", ";", ":", "\\/", "\\`"};
+        int cnt = Arrays.stream(arrs).mapToInt(str::indexOf).sum();
+        if (cnt == (arrs.length * -1)) return false;
+        return true;
     }
 
-    // Single item
 
     @GetMapping("/boards/{id}")
     Board one(@PathVariable Long id) {

@@ -41,16 +41,16 @@ class BoardApiController {
             }
         }
         System.out.println(email.substring(email.lastIndexOf("@")));
-
+//
+//
         return null;
 //        return repository.save(newBoard);
     }
 
     public boolean check(String str){
+        if (null == str && 0 == str.length()) return true;
         String[] arrs = {"[", "]", "<", ">", "@", "(", ")", ";", ":", "\\/", "\\`"};
-        int cnt = Arrays.stream(arrs).mapToInt(str::indexOf).sum();
-        if (cnt == (arrs.length * -1)) return false;
-        return true;
+        return Arrays.stream(arrs).mapToInt(str::indexOf).sum() == (arrs.length * -1);
     }
 
 

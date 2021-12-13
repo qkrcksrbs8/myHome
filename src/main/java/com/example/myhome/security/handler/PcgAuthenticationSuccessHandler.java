@@ -20,11 +20,11 @@ public class PcgAuthenticationSuccessHandler implements AuthenticationSuccessHan
         HttpSession session = request.getSession(false);
         if (session == null) {
             System.out.println("Authentication session is null");
-            response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));
-            redirectStrategy.sendRedirect(request, response, "/");
+//            response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));
+            redirectStrategy.sendRedirect(request, response, "/account/login");
             return;
         }
-        System.out.println("Authentication Success !");
+        System.out.println("Authentication Success : "+session.getId());
         session.setAttribute("user", UserDetailsHelper.getAuthenticatedUser());
 
 //        response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));

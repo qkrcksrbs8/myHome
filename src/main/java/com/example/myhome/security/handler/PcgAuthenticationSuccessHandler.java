@@ -17,14 +17,16 @@ public class PcgAuthenticationSuccessHandler implements AuthenticationSuccessHan
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
+
         HttpSession session = request.getSession(false);
         if (session == null) {
             System.out.println("Authentication session is null");
 //            response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));
-            redirectStrategy.sendRedirect(request, response, "/account/login");
             return;
         }
         System.out.println("Authentication Success : "+session.getId());
+        System.out.println("session.getId() : "+session.getId());
+        System.out.println("getAuthenticatedUser() : "+UserDetailsHelper.getAuthenticatedUser());
         session.setAttribute("user", UserDetailsHelper.getAuthenticatedUser());
 
 //        response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));

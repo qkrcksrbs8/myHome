@@ -6,7 +6,11 @@ import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 @Aspect
@@ -37,8 +41,28 @@ public class AopConfig {
 
     @Around("execution(* com.example.myhome..controller.*.*(..))")
     public Object checkSomethingAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        String type = joinPoint.getSignature().toShortString();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        HttpSession session = request.getSession();
+
+//        String sessGuid = isNullToString(session.getAttribute("SESS_GUID"));
+//
+//        if(sessGuid.equals("")){
+//            session.setAttribute("SESS_GUID", key);
+//            sessGuid = key;
+//        }
+
+        request.getParameterMap();
+        logger.info("SESS_GUID = {}, ===================START===================", "pcg0902");
+        logger.info("SESS_GUID = {}, @Around : {}", "pcg0902", type);
+//        logger.info("SESS_GUID = {}, @Around : {}, param : {}", "pcg0902", type, map2str(request.getParameterMap()));
+
         Object result = joinPoint.proceed();
         return result;
+    }
+
+    private Object isNullToString(Object obj) {
+        return (null == obj)? "" : obj;
     }
 
 }

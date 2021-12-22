@@ -22,7 +22,7 @@ public class AopConfig {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     String sessGuid = "E6F9B4F2A2465CE76D991BF5807AD9E0";
 
-    @Around("execution(* com.example.myhome..controller.*.*(..))")
+    @Around("execution(* com.example.myhome..controller.*.*(..)) || execution(* com.example.myhome..service.*.*(..))")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         String type = joinPoint.getSignature().toShortString();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();

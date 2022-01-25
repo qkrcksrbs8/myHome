@@ -27,24 +27,7 @@ class BoardApiController {
 
     @PostMapping("/boards")
     Board newBoard(@RequestBody Board newBoard) {
-
-        String email = newBoard.getContent();
-        if (email.lastIndexOf("@") == -1) {
-            System.out.println("@없음");
-        }
-        else {
-            if (check(email.substring(0,email.lastIndexOf("@")))) {
-                System.out.println("유효성 위반");
-            }
-            else {
-                System.out.println("유효성 합격");
-            }
-        }
-        System.out.println(email.substring(email.lastIndexOf("@")));
-//
-//
-        return null;
-//        return repository.save(newBoard);
+        return repository.save(newBoard);
     }
 
     public boolean check(String str){

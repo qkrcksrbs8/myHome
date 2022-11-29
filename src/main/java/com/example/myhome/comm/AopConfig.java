@@ -36,14 +36,14 @@ public class AopConfig {
         String type = joinPoint.getSignature().toShortString();
         Object[] args = joinPoint.getArgs();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        if (args.length == 0 || args[0] instanceof HttpServletRequest){
+        if (args.length == 0 || args[0] instanceof HttpServletRequest) {
             logger.info("SESS_GUID = {}, @Before : {}, param : {}", sessGuid, type, LogUtil.mapToStr(request.getParameterMap()));
-        }else{
+        } else {
             logger.info("SESS_GUID = {}, @Before : {}, param : {}", sessGuid, type, LogUtil.setParamParse(args[0].toString(), "="));
         }
     }
 
-    @AfterReturning(pointcut = "execution(* com.example.myhome..controller.*.*(..)) || execution(* com.example.myhome..service.*.*(..))", returning="retValue")
+    @AfterReturning(pointcut = "execution(* com.example.myhome..controller.*.*(..)) || execution(* com.example.myhome..service.*.*(..))", returning = "retValue")
     public void after(JoinPoint joinPoint, Object retValue) {
         String type = joinPoint.getSignature().toShortString();
         logger.info("SESS_GUID = {}, @After : {}, result : {}", sessGuid, type, retValue);

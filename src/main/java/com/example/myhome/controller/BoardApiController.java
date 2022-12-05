@@ -18,8 +18,8 @@ class BoardApiController {
 
     @GetMapping("/boards")
     List<Board> all(@RequestParam(required = false) String title,
-                    @RequestParam(required = false, defaultValue = "") String content ) {
-        if (StringUtils.isEmpty(title) && StringUtils.isEmpty(content)){
+                    @RequestParam(required = false, defaultValue = "") String content) {
+        if (StringUtils.isEmpty(title) && StringUtils.isEmpty(content)) {
             return repository.findAll();
         }
         return repository.findByTitleOrContent(title, content);
@@ -30,7 +30,7 @@ class BoardApiController {
         return repository.save(newBoard);
     }
 
-    public boolean check(String str){
+    public boolean check(String str) {
         if (null == str && 0 == str.length()) return true;
         String[] arrs = {"[", "]", "<", ">", "@", "(", ")", ";", ":", "\\/", "\\`"};
         return Arrays.stream(arrs).mapToInt(str::indexOf).sum() == (arrs.length * -1);

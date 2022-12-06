@@ -26,7 +26,6 @@ public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
 
-
     @Autowired
     private BoardService boardService;
 
@@ -37,18 +36,18 @@ public class BoardController {
     public String list(Model model, @PageableDefault(size = 2) Pageable pageable,
                        @RequestParam(required = false, defaultValue = "") String searchText) {
 //        Page<Board> boards  =  boardRepository.findAll(pageable);
-        Page<Board> boards  =  boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
-        int startPage       = Math.max(1, boards.getPageable().getPageNumber() - 4);
-        int endPage         = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
-        model.addAttribute("startPage"  , startPage);
-        model.addAttribute("endPage"    , endPage);
-        model.addAttribute("boards"     , boards);
+        Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
+        int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("boards", boards);
         return "board/list";
     }
 
     @GetMapping("/form")
     public String form(Model model, @RequestParam(required = false) Long id) {
-        if (null == id){
+        if (null == id) {
             model.addAttribute("board", new Board());
         } else {
             Board board = boardRepository.findById(id).orElse(null);
@@ -58,7 +57,7 @@ public class BoardController {
     }
 
     @PostMapping("/form")
-    public String postForm(@Valid Board board, BindingResult bindingResult, Authentication authentication){
+    public String postForm(@Valid Board board, BindingResult bindingResult, Authentication authentication) {
         boardValidator.validate(board, bindingResult);
         if (bindingResult.hasErrors()) {
             return "board/form";

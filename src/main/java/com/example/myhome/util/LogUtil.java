@@ -10,11 +10,11 @@ public class LogUtil {
         return (str == null && str == "");
     }
 
-    public static String mapToStr(Map<String, String[]> map){
-        return (map == null || map.keySet().size() == 0)? "{null}":appendMapToStr(map);
+    public static String mapToStr(Map<String, String[]> map) {
+        return (map == null || map.keySet().size() == 0) ? "{null}" : appendMapToStr(map);
     }
 
-    public static String appendMapToStr(Map<String, String[]> map){
+    public static String appendMapToStr(Map<String, String[]> map) {
         StringBuffer sb = new StringBuffer();
         sb.append("{");
         for (String key : map.keySet()) sb.append(strType(map.get(key), key)).append(", ");
@@ -22,13 +22,13 @@ public class LogUtil {
         return sb.toString().replace(", }", "}");
     }
 
-    public static String strType (Object val, String key) {
+    public static String strType(Object val, String key) {
         boolean chkKey = false;
         if (val == null) return key + "null";
         if (val instanceof String) return keyVal(key, val, chkKey);
-        if (val instanceof String[]){
+        if (val instanceof String[]) {
             String[] arr = (String[]) val;
-            if(arr.length == 1) return keyVal(key, arr[0], chkKey);
+            if (arr.length == 1) return keyVal(key, arr[0], chkKey);
             StringBuilder sb = new StringBuilder();
             Arrays.stream(arr).forEach(a -> sb.append(keyVal(key, a, chkKey)));
         }
@@ -36,7 +36,7 @@ public class LogUtil {
     }
 
     public static String keyVal(String key, Object obj, boolean chkKey) {
-        return (chkKey)? key+":"+obj.toString().replaceAll(".*", "****") : key+":"+obj;
+        return (chkKey) ? key + ":" + obj.toString().replaceAll(".*", "****") : key + ":" + obj;
     }
 
     public static String setParamParse(String str, String gubun) {
@@ -71,15 +71,15 @@ public class LogUtil {
     }
 
     public static String keyVal2(String key, Object obj, boolean chkKey, String gubun) {
-        return (chkKey)? key+gubun+obj.toString().replaceAll(".*", "****") : key+gubun+obj;
+        return (chkKey) ? key + gubun + obj.toString().replaceAll(".*", "****") : key + gubun + obj;
     }
 
-    public static String loopVal(String key, Object val, boolean chkKey, String gubun){
+    public static String loopVal(String key, Object val, boolean chkKey, String gubun) {
         if (val == null) return key + "null";
         if (val instanceof String) return keyVal2(key, val, chkKey, gubun);
         if (val instanceof String[]) {
             String[] arr = (String[]) val;
-            if (arr.length == 1)  return keyVal2(key, arr[0], chkKey, gubun);
+            if (arr.length == 1) return keyVal2(key, arr[0], chkKey, gubun);
             StringBuilder sb = new StringBuilder();
             Arrays.stream(arr).forEach(a -> sb.append(keyVal2(key, a, chkKey, gubun)));
             return sb.toString();

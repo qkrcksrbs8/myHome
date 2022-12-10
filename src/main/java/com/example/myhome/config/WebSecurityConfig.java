@@ -50,28 +50,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()//csrf() 삭제해야함
+                .csrf().disable()//csrf() 삭제해야함
 //            .sessionManagement()
 //            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //            .and()
-            .authorizeRequests()
-            .antMatchers("/", "/account/register", "/css/**","/api/**").permitAll()
-            .anyRequest().permitAll()
+                .authorizeRequests()
+                .antMatchers("/", "/account/register", "/css/**", "/api/**").permitAll()
+                .anyRequest().permitAll()
                 .and()
-            .formLogin()
-            .loginPage("/account/login").permitAll()
+                .formLogin()
+                .loginPage("/account/login").permitAll()
 //            .successHandler(pcgAuthenticationSuccessHandler())
 //            .failureHandler(pcgAuthenticationFailureHandler())
-        .and()
-            .logout()
-            .logoutUrl("/logout")
-            .deleteCookies("JSESSIONID")
-            .invalidateHttpSession(true)
-        .and()
-            .exceptionHandling().accessDeniedPage("/");
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
+                .and()
+                .exceptionHandling().accessDeniedPage("/");
         http
-            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
-                    UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
+                        UsernamePasswordAuthenticationFilter.class);
     }
 
     @Autowired

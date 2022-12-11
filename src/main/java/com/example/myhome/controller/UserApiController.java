@@ -3,21 +3,19 @@ package com.example.myhome.controller;
 import com.example.myhome.model.Board;
 import com.example.myhome.model.User;
 import com.example.myhome.repository.UserRepository;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- *
  * <pre>
  * User API
  * </pre>
  *
+ * @version 1.0
  * @ClassName : UserApiController.java
  * @Description : 사용자 정보 CRUD 컨트롤러 입니다.
- * @version 1.0
  * @Modification Information
  * <pre>
  * since		: 2021-08-26

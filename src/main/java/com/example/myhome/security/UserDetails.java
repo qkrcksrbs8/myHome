@@ -16,6 +16,7 @@ public class UserDetails extends User {
     public Object getUserVO() {
         return userVO;
     }
+
     public void setUserVO(Object userVO) {
         this.userVO = userVO;
     }
@@ -33,7 +34,7 @@ public class UserDetails extends User {
     public UserDetails(String userid, String username, String password, boolean enabled, Object userVO) throws IllegalArgumentException {
 
         this(userid, username, password, enabled, true, true, true,
-                Arrays.asList(new GrantedAuthority[] {new SimpleGrantedAuthority("ROLE_GUEST")}), userVO);
+                Arrays.asList(new GrantedAuthority[]{new SimpleGrantedAuthority("ROLE_GUEST")}), userVO);
     }
 
 }

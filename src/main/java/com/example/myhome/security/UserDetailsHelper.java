@@ -100,7 +100,7 @@ public class UserDetailsHelper {
         while (iter.hasNext()) {
             GrantedAuthority auth = iter.next();
             logger.debug("## UserDetailsHelper.getAuthorities : Authority is {}", auth.getAuthority());
-            if(authority.equals(auth.getAuthority())) {
+            if (authority.equals(auth.getAuthority())) {
                 result = true;
                 break;
             }
@@ -115,8 +115,8 @@ public class UserDetailsHelper {
         authentication.setAuthenticated(auth);
     }
 
-    public static int userIdx () {
-        return ((UserVO)getAuthenticatedUser()).getIdx();
+    public static int userIdx() {
+        return ((UserVO) getAuthenticatedUser()).getIdx();
     }
 
 }

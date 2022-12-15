@@ -26,13 +26,16 @@ public class User implements UserDetails, CredentialsContainer {
     public String getPassword() {
         return password;
     }
+
     public String getUserid() {
         return userid;
     }
+
     @Override
     public String getUsername() {
         return username;
     }
+
     @Override
     public Set<GrantedAuthority> getAuthorities() {
         return authorities;

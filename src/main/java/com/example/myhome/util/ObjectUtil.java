@@ -72,9 +72,9 @@ public class ObjectUtil {
 
     public static String isNullStr(Object object, String convert) {
         String returnVal = "";
-        if((object == null) || object.equals(null)) {
+        if ((object == null) || object.equals(null)) {
             returnVal = convert;
-        } else  {
+        } else {
             returnVal = object.toString();
         }
         return returnVal;
@@ -82,7 +82,7 @@ public class ObjectUtil {
 
     public static String isEmptyStr(Object object) {
         String returnVal = "";
-        if(object.toString() == null || object.toString() == "" || object.toString().equals(null) || object.toString().equals("")) {
+        if (object.toString() == null || object.toString() == "" || object.toString().equals(null) || object.toString().equals("")) {
             returnVal = null;
         } else {
             returnVal = object.toString();
@@ -91,7 +91,7 @@ public class ObjectUtil {
     }
 
     public static Object replaceEmptyNull(Object object) {
-        if(object.toString() == "" || object.equals("")) {
+        if (object.toString() == "" || object.equals("")) {
             object = null;
         }
         return object;

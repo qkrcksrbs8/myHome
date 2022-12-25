@@ -24,9 +24,9 @@ public class PcgAuthenticationSuccessHandler implements AuthenticationSuccessHan
 //            response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));
             return;
         }
-        System.out.println("Authentication Success : "+session.getId());
-        System.out.println("session.getId() : "+session.getId());
-        System.out.println("getAuthenticatedUser() : "+UserDetailsHelper.getAuthenticatedUser());
+        System.out.println("Authentication Success : " + session.getId());
+        System.out.println("session.getId() : " + session.getId());
+        System.out.println("getAuthenticatedUser() : " + UserDetailsHelper.getAuthenticatedUser());
         session.setAttribute("user", UserDetailsHelper.getAuthenticatedUser());
 
 //        response.setHeader("Set-Cookie", String.format("JSESSIONID=%s;SameSite=None;Secure;HttpOnly;", session.getId()));

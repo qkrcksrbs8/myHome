@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -57,15 +57,26 @@ public class BoardController {
     }
 
     @PostMapping("/form")
-    public String postForm(@Valid Board board, BindingResult bindingResult, Authentication authentication) {
-        boardValidator.validate(board, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return "board/form";
-        }
-        String username = authentication.getName();
-        boardService.save(username, board);
-//        boardRepository.save(board);
-        return "redirect:/board/list";
+    public String postForm(@Valid Board board, BindingResult bindingResult, HttpServletResponse response) {
+
+        response.setStatus(200);
+        return "board/list";
+//        return "redirect:/board/list";
     }
+
+//    @PostMapping("/form")
+//    public String postForm(@Valid Board board, BindingResult bindingResult, HttpServletResponse response) {
+//        boardValidator.validate(board, bindingResult);
+////        if (bindingResult.hasErrors()) {
+////            return "board/form";
+////        }
+////        String username = authentication.getName();
+////        boardService.save(username, board);
+//        boardRepository.save(board);
+//        response.setStatus(200);
+//        response.encodeURL("/board/list");
+//        response.encodeRedirectURL("/board/list");
+//        return response;
+//    }
 
 }

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link href="sticky-footer-navbar.css" th:href="@{/sticky-footer-navbar.css}" rel="stylesheet">
 
     <title id="pageTitle">게시판</title>
@@ -18,36 +19,37 @@
 </header>
 
 
-    <div class="container">
-        <h2>게시판</h2>
-        <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
-            <input type="hidden" th:field="*{id}">
-            <div class="form-group">
-                <label for="title">제목</label>
-                <input type="text" class="form-control"
-                       th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}">
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
-                    제목 에러 메시지
-                </div>
+<div class="container">
+    <h2>게시판</h2>
+    <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" class="form-control"
+                   th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                제목 에러 메시지
             </div>
-            <div class="form=-group">
-                <label for="content">내용</label>
-                <textarea class="form-control" id="content" rows="3" th:field="*{content}"
-                          th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'"></textarea>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
-                    제목 에러 메시지
-                </div>
+        </div>
+        <div class="form=-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" id="content" rows="3" th:field="*{content}"
+                      th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'"></textarea>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
+                제목 에러 메시지
             </div>
-            <div class="text-end">
-                <a type="button" class="btn btn-primary" th:href="@{/board/list}">취소</a>
-                <button type="submit" class="btn btn-primary">확인</button>
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="text-end">
+            <a type="button" class="btn btn-primary" th:href="@{/board/list}">취소</a>
+            <button type="submit" class="btn btn-primary">확인</button>
+        </div>
+    </form>
+</div>
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
